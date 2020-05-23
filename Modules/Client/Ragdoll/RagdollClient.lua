@@ -42,7 +42,7 @@ function RagdollClient:_setupShake()
 		alive = false
 	end)
 
-	spawn(function()
+	coroutine.wrap(function()
 		for i=1, 0, -0.1 do
 			HapticFeedbackUtils.setSmallVibration(lastInputType, i)
 			wait(0.05)
@@ -54,7 +54,7 @@ function RagdollClient:_setupShake()
 				HapticFeedbackUtils.smallVibrate(lastInputType)
 			end)
 		end
-	end)
+	end)()
 end
 
 function RagdollClient:_setupState()
